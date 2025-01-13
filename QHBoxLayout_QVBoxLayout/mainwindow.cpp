@@ -4,7 +4,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     // 设置主窗口左上角的title
-    setWindowTitle("各种布局控件测试");
+    setWindowTitle("水平/垂直布局");
 
     //创建中央部件
     QWidget* centralWidget = new QWidget;
