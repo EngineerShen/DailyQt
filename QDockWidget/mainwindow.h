@@ -1,34 +1,31 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
-{
-    ui->setupUi(this);
-}
+#include <QMainWindow>
+#include <QTreeWidgetItem>
 
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
+QT_BEGIN_NAMESPACE
+namespace Ui { class MainWindow; }
+QT_END_NAMESPACE
 
-void MainWindow::on_actionTang_triggered(bool checked)
+class MainWindow : public QMainWindow
 {
-    ui -> dockWidgetTang -> setVisible(checked);
-}
+    Q_OBJECT
 
-void MainWindow::on_actionSong_triggered(bool checked)
-{
-    ui -> dockWidgetSong -> setVisible(checked);
-}
+public:
+    MainWindow(QWidget *parent = nullptr);
+    ~MainWindow();
 
-void MainWindow::on_dockWidgetSong_visibilityChanged(bool visible)
-{
-    ui -> actionSong -> setChecked(visible);
-}
+private slots:
+    void on_actionTang_triggered(bool checked);
 
-void MainWindow::on_dockWidgetTang_visibilityChanged(bool visible)
-{
-    ui -> actionTang -> setChecked(visible);
-}
+    void on_actionSong_triggered(bool checked);
+
+    void on_dockWidgetSong_visibilityChanged(bool visible);
+
+    void on_dockWidgetTang_visibilityChanged(bool visible);
+
+private:
+    Ui::MainWindow *ui;
+};
+#endif // MAINWINDOW_H
